@@ -5,13 +5,14 @@ export const loginAction = (data,history) => async (dispatch) => {
 
     try {
     dispatch(loginRequest());
-    const res = await axios.post("https://intmvend.herokuapp.com/api/v1/login", data);
+    const res = await axios.post("http://localhost:3333/api/v1/login", data);
 
     const user = await res.data;
     localStorage.setItem("token", user.token);
 
-    history.push('/logged')
+   
     dispatch(loginSuccess(user));
+    history.push('/logged')
 
     
     } catch (error) {
@@ -20,7 +21,7 @@ export const loginAction = (data,history) => async (dispatch) => {
         dispatch(loginFails(errorMessage))
     }
     else{
-        dispatch(loginFails("Error, please check your connection and try again!"))
+        dispatch(loginFails("bad connection"))
     }
     }
 };

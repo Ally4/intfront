@@ -5,23 +5,23 @@ export const postAction = (data,history) => async (dispatch) => {
 
     try {
     dispatch(postRequest());
-    const res = await axios.post("https://intmvend.herokuapp.com/api/v1/create-post", data);
+    const res = await axios.post("http://localhost:3333/api/v1/create-post", data);
 
     const user = await res.data;
     localStorage.setItem("token", user.token);
-    localStorage.setItem('user-data', JSON.stringify(user));
-
-    history.push('/dashboard')
-    dispatch(postSuccess(user));
 
     
+    
+    dispatch(postSuccess(user));
+    history.push('/logged')
+
     } catch (error) {
       if (error.response) {
         const errorMessage = await error.response.data.message;
         dispatch(postFails(errorMessage))
     }
     else{
-        dispatch(postFails("Error, please check your connection and try again!"))
+        dispatch(postFails("bad connection"))
     }
     }
 };

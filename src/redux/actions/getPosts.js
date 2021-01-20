@@ -5,15 +5,14 @@ export const getPostsAction = (data,history) => async (dispatch) => {
 
     try {
     dispatch(getPostsRequest());
-    const res = await axios.post("https://intmvend.herokuapp.com/api/v1/get-posts", data);
+    const token = await localStorage.getItem('token')
+    const res = await axios.get('http:localhost:3333/api/v1/get-posts', {
+        headers: {
+            'Authorization': token
+        }
+    });
 
-    const user = await res.data;
-    localStorage.setItem("token", user.token);
-    localStorage.setItem('user-data', JSON.stringify(user));
-
-    history.push('/dashboard')
-    dispatch(getPostsSuccess(user));
-
+    dispatch(getPostsSuccess(res));
     
     } catch (error) {
       if (error.response) {
@@ -21,7 +20,7 @@ export const getPostsAction = (data,history) => async (dispatch) => {
         dispatch(getPostsFails(errorMessage))
     }
     else{
-        dispatch(getPostsFails("Error, please check your connection and try again!"))
+        dispatch(getPostsFails("bad connection"))
     }
     }
 };
