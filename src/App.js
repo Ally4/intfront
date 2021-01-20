@@ -8,7 +8,6 @@ class App extends Component {
   render() {
     return (
       <div className="App-header">
-        <div className="title">FEEL FREE TO POST HERE</div>
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component="login">
