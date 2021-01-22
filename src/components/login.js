@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loginAction } from "../redux/actions/login";
 import { withRouter } from 'react-router-dom';
-// import '../../scss/login.scss';
 
 class Login extends Component {
   constructor(props) {
@@ -37,7 +36,6 @@ class Login extends Component {
           please wait ...{" "}
         </p>
           <h1>Log in</h1>
-          <span style={{color: "#fff"}}>{ this.props.loginState.error} <br/></span>
           <input
             type="email"
             name="email"
@@ -46,8 +44,6 @@ class Login extends Component {
             placeholder="Email"
             onChange={(e) => this.change(e)}
           />
-          <br />
-          <span style={{ color: "#fff" }}>{this.state.emailError}</span>
           <br /> <br />
           <input
             type="password"
@@ -57,8 +53,6 @@ class Login extends Component {
             placeholder="Password"
             onChange={(e) => this.change(e)}
           />
-          <br />
-          <span style={{ color: "#fff" }}>{this.state.passwordError}</span>
           <br />
           <br />
           <input

@@ -38,7 +38,6 @@ render() {
         please wait ...{" "}
         </p>
         <h1>Log in</h1>
-        <span style={{color: "#fff"}}>{ this.props.loginState.error} <br/></span>
         <input
             type="email"
             name="email"
@@ -48,7 +47,6 @@ render() {
             onChange={(e) => this.change(e)}
         />
         <br />
-        <span style={{ color: "#fff" }}>{this.state.emailError}</span>
         \<br /> <br />
         <input
             type="password"
@@ -58,8 +56,6 @@ render() {
             placeholder="Password"
             onChange={(e) => this.change(e)}
         />
-        <br />
-        <span style={{ color: "#fff" }}>{this.state.passwordError}</span>
         <br />
         <br />
         <input
