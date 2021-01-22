@@ -31,7 +31,7 @@ class Login extends Component {
         <form onSubmit={(e) => this.onSubmit(e)}>
         <p
           id="loading"
-          style={{ color: "#fff", display: this.props.loginState.loading }}
+          style={{ color: "000", display: this.props.loginState.loading }}
         >
           please wait ...{" "}
         </p>

@@ -10,7 +10,8 @@ export const registerAction = (data,history) => async (dispatch) => {
     const user = await res.data;
 
     dispatch(registerSuccess(user));
-    history.push('/')
+    history.push('/login')
+    console.log('the registration');
 
     
     } catch (error) {

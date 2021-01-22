@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { registerAction } from "../redux/actions/register";
 import { withRouter } from 'react-router-dom';
 
-class Login extends Component {
+class Register extends Component {
 constructor(props) {
     super(props);
     this.state = {
@@ -29,15 +29,25 @@ change = (e) => {
 
 render() {
     return (
-    <div className="login">
+    <div className="register">
         <form onSubmit={(e) => this.onSubmit(e)}>
         <p
         id="loading"
-        style={{ color: "#fff", display: this.props.loginState.loading }}
+        style={{ color: "000", display: this.props.registerState.loading }}
         >
         please wait ...{" "}
         </p>
-        <h1>Log in</h1>
+        <h1>register</h1>
+        <input
+            type="name"
+            name="name"
+            id="name"
+            aria-label="name"
+            placeholder="Name"
+            onChange={(e) => this.change(e)}
+        />
+        <br />
+        <br /> <br />
         <input
             type="email"
             name="email"
@@ -47,7 +57,7 @@ render() {
             onChange={(e) => this.change(e)}
         />
         <br />
-        \<br /> <br />
+        <br /> <br />
         <input
             type="password"
             id="password"
@@ -61,9 +71,9 @@ render() {
         <input
             type="submit"
             id="button"
-            value="LOGIN"
-            aria-label="login"
-            className="login-btn"
+            value="REGISTER"
+            aria-label="register"
+            className="register-btn"
         />
         </form>
     </div>
@@ -74,14 +84,14 @@ render() {
 
 const mapStateToProps = (state) => {
 return {
-    loginState: state.login,
+    registerState: state.register,
 };
 };
 
 const mapDispatchToProps = (dispatch) => {
 return {
-    loginAction: (data, history) => dispatch(loginAction(data, history)),
+    registerAction: (data, history) => dispatch(registerAction(data, history)),
 };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));
