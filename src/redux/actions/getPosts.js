@@ -8,7 +8,7 @@ export const getPostsAction = (data,history) => async (dispatch) => {
     const token = await localStorage.getItem('token')
     const res = await axios.get('https://intmvend.herokuapp.com/api/v1/get-posts', {
         headers: {
-            'Authorization': token
+            'token': token
         }
     });
 
