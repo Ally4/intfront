@@ -15,7 +15,7 @@ const reducerRegister = (state = initialState, action) => {
             };
         case REGISTER_SUCCESS:
             return {
-                loading:'block',
+                loading:'none',
                 data:action.payload,
                 error: ''
             };

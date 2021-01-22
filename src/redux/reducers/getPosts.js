@@ -15,7 +15,7 @@ const reducerGETPOST = (state = initialState, action) => {
             };
         case GETPOST_SUCCESS:
             return {
-                loading:'block',
+                loading:'none',
                 data:action.payload,
                 error: ''
             };

@@ -15,7 +15,7 @@ const reducerLogin = (state = initialState, action) => {
             };
         case LOGIN_SUCCESS:
             return {
-                loading:'block',
+                loading:'none',
                 data:action.payload,
                 error: ''
             };
