@@ -5,11 +5,10 @@ export const registerAction = (data,history) => async (dispatch) => {
 
     try {
     dispatch(registerRequest());
-    const res = await axios.post("http:localhost:3333/api/v1/register", data);
+    const res = await axios.post("https://intmvend.herokuapp.com/api/v1/register", data);
 
     const user = await res.data;
     localStorage.setItem("token", user.token);
-    localStorage.setItem('user-data', JSON.stringify(user));
 
     history.push('/dashboard')
     dispatch(registerSuccess(user));

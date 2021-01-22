@@ -5,19 +5,21 @@ export const postAction = (data,history) => async (dispatch) => {
 
     try {
     dispatch(postRequest());
-    const res = await axios.post("http://localhost:3333/api/v1/create-post", data);
+    const token = localStorage.getItem('token');
+    const res = await axios.post("https://intmvend.herokuapp.com/api/v1/create-post", data, {
+      headers: {
+        'token': token
+      }
+    });
 
-    const user = await res.data;
-    localStorage.setItem("token", user.token);
-
-    
-    
-    dispatch(postSuccess(user));
-    history.push('/logged')
+    dispatch(postSuccess(res));
+    history.push('/logged');
+    console.log('the post is successfull');
 
     } catch (error) {
       if (error.response) {
         const errorMessage = await error.response.data.message;
+        console.log(error.response.data.message)
         dispatch(postFails(errorMessage))
     }
     else{

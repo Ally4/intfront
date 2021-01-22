@@ -5,11 +5,12 @@ export const loginAction = (data,history) => async (dispatch) => {
 
     try {
     dispatch(loginRequest());
-    const res = await axios.post("http://localhost:3333/api/v1/login", data);
+    const res = await axios.post("https://intmvend.herokuapp.com/api/v1/login", data);
 
     const user = await res.data;
     localStorage.setItem("token", user.token);
 
+    //how to use one dispatch
    
     dispatch(loginSuccess(user));
     history.push('/logged')
