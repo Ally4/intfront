@@ -11,7 +11,6 @@ export const registerAction = (data,history) => async (dispatch) => {
 
     dispatch(registerSuccess(user));
     history.push('/login')
-    console.log('the registration');
 
     
     } catch (error) {
